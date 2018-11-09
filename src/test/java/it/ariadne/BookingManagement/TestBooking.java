@@ -44,5 +44,20 @@ public class TestBooking {
 		assertEquals("Se una prenotazione della risorsa non è aggiunta il metodo ritorna 1", 1, a2);
 		
 	}
+	
+	@Test
+	public void testDeleteBooked() {
+		List<Booking> l = new ArrayList<>();
+		Resource res = new Projector(l);
+		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
+		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
+		int a1 = res.addBooking("a", start, end);
+		int a3 = res.deleteBooking("a", start, end);
+		int a2 = res.deleteBooking("b", start, end);	
+		assertEquals("Se una prenotazione della risorsa è cancellata il metodo ritorna 0", 0, a3);
+		assertEquals("Se una prenotazione della risorsa non è cancellata il metodo ritorna 1", 1, a2);
 	}
 	
+}
+
+
