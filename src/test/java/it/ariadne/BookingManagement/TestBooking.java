@@ -31,4 +31,18 @@ public class TestBooking {
 		assertEquals("Se una risorsa è occupata la richiesta torna falso", false, bookingreq);
 		assertEquals("Se una risorsa è libera la richiesta torna vero", true, bookingreq1);
 	}
-}
+	
+	@Test
+	public void testBooked() {
+		List<Booking> l = new ArrayList<>();
+		Resource res = new Projector(l);
+		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
+		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
+		int a1 = res.addBooking("a", start, end);
+		int a2 = res.addBooking("b", start, end);		
+		assertEquals("Se una prenotazione della risorsa è aggiunta il metodo ritorna 0", 0, a1);
+		assertEquals("Se una prenotazione della risorsa non è aggiunta il metodo ritorna 1", 1, a2);
+		
+	}
+	}
+	
