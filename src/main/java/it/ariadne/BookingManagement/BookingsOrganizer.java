@@ -1,6 +1,7 @@
 package it.ariadne.BookingManagement;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
+import org.joda.time.Period;
 
 public class BookingsOrganizer {
 	private Map<Resource, List> organizer= new LinkedHashMap<>();
