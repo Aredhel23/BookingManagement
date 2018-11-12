@@ -15,7 +15,8 @@ public class TestBooking {
 	@Test
 	public void testBookingRequest() {
 		List<Booking> l = new ArrayList<>();
-		Resource res = new Projector(l);
+		int colors = 256;
+		Resource res = new Projector(l, colors);
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
@@ -37,7 +38,8 @@ public class TestBooking {
 	@Test
 	public void testBooked() {
 		List<Booking> l = new ArrayList<>();
-		Resource res = new Projector(l);
+		int colors = 256;
+		Resource res = new Projector(l, colors);
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
@@ -51,7 +53,8 @@ public class TestBooking {
 	@Test
 	public void testDeleteBooked() {
 		List<Booking> l = new ArrayList<>();
-		Resource res = new Projector(l);
+		int colors = 256;
+		Resource res = new Projector(l, colors);
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
@@ -65,7 +68,8 @@ public class TestBooking {
 	@Test
 	public void testFirstAvailability() {
 		List<Booking> l = new ArrayList<>();
-		Resource res = new Projector(l);
+		int colors = 256;
+		Resource res = new Projector(l, colors);
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		Period p = new Period().withHours(3);
 		DateTime book1 = ba.firstAvailability(res, p);
