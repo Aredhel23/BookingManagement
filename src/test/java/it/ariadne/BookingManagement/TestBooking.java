@@ -92,6 +92,23 @@ public class TestBooking {
 				+ "null",true, book4.isEmpty());
 		
 	}
+	@Test
+	public void testFirstAvailabilityLimit() {
+		List<Booking> l = new ArrayList<>();
+		int colors = 256;
+		Resource res = new Projector(l, colors);
+		BookingsOrganizer ba = new BookingsOrganizer(res);
+		Period p = new Period().withHours(3);
+		List<DateTime> book1 = ba.firstAvailability("Projector", p, 256);
+		DateTime start = book1.get(0);
+		DateTime end = book1.get(1);
+		DateTime d = new DateTime();
+		List<DateTime> book2 = ba.firstAvailability("Projector", p, 512);
+		assertEquals("Se una prenotazione di 3 ore a partire dal presente con il limite a 256 è possibile torna il"
+				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book1.get(0).getHourOfDay());
+		assertEquals("Se una prenotazione di 3 ore a partire dal presente con il limite a 256 non  è possibile torna il\"\r\n" + 
+				"				+ una lista vuota", Collections.emptyList(), book2);
+	}
 	
 }
 
