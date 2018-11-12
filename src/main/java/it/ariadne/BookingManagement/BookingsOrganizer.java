@@ -62,6 +62,24 @@ public class BookingsOrganizer {
 		 return 2;
 	}
 	
-}
+	public int deleteBooking(Resource r, String name, DateTime start, DateTime end) {
+		Iterator it = organizer.entrySet().iterator();
+		 while (it.hasNext()) {
+			    Map.Entry entry = (Map.Entry)it.next();
+			    if(entry.getKey().equals(r)) {
+			    	List<Booking> bookings = (ArrayList)entry.getValue();
+					for (Booking b:bookings) {
+						if(b.getName().equals(name))
+							if(b.getI().getStart().equals(start) && b.getI().getEnd().equals(end)) {
+								bookings.remove(b);
+								return 0;
+							}
+					}
+					return 1;
+			    }
+		 }
+		 return 2;
 	}
+}
+
 
