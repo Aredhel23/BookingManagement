@@ -11,15 +11,30 @@ import it.ariadne.BookingManagement.Resource;
 public class Projector implements Resource {
 	
 	private List<Booking> projectorList;
-	
-	public Projector(List<Booking> l) {
+	private int colors;
+	private String type = "Projector";
+	public Projector(List<Booking> l, int colors) {
 		this.projectorList = l;
+		this.colors = colors;
 	}
 	
 
 	@Override
 	public List<Booking> getList() {
 		return projectorList;
+	}
+
+
+	@Override
+	public int getLimit() {
+		return colors;
+	}
+
+
+	@Override
+	public String getType() {
+		
+		return type;
 	}
 
 
