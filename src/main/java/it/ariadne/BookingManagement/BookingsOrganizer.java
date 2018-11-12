@@ -103,6 +103,38 @@ public class BookingsOrganizer {
 		 }
 		return null;
 	}
+	
+	public List<DateTime> firstAvailability(Resource r, Period p, DateTime start, DateTime end) {
+		Iterator it = organizer.entrySet().iterator();
+		List<DateTime> dates = new ArrayList<>();
+		 while (it.hasNext()) {
+			    Map.Entry entry = (Map.Entry)it.next();
+			    if(entry.getKey().equals(r)) {
+			    	boolean ret = true;
+			    	List<Booking> bookings = (ArrayList)entry.getValue();
+			    	Period defPeriod = new Period().withHours(1);
+			    	DateTime start1 = start;
+			    	while(ret) {
+			    		DateTime end1 = start1.plus(p); 
+			    		if (end1.isBefore(end)) {
+				    		if (bookingRequest(r, start1, end1)) {
+				    			dates.add(start1);
+				    			dates.add(end1);
+				    			return dates;
+				    		}
+				    		ret = !bookingRequest(r, start1, end1);
+				    		start1 = start1.plus(defPeriod);
+			    		}
+			    		else {
+			    			return Collections.emptyList();
+			    		}
+			    		
+			    	}
+			    }
+			    
+		 }
+		return  Collections.emptyList();
+	}
 }
 
 
