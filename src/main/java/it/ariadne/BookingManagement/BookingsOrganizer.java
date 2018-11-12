@@ -36,26 +36,18 @@ public class BookingsOrganizer {
 	}
 	
 	public int addBooking(Resource r, String name, DateTime start, DateTime end) {
-		Iterator it = organizer.entrySet().iterator();
-		 while (it.hasNext()) {
-			    Map.Entry entry = (Map.Entry)it.next();
-			    if(entry.getKey().equals(r)) {
-			    	List<Booking> bookings = (ArrayList)entry.getValue();
-					if(bookingRequest(r, start, end)) {
-						Interval interval = new Interval(start, end);
-						Booking p = new Booking(name, interval);
-						bookings.add(p);
-						return 0;
-					}
-					else 
-						return 1;
-			    }
-
+		
+    	List<Booking> bookings = organizer.get(r);
+		if(bookingRequest(r, start, end)) {
+			Interval interval = new Interval(start, end);
+			Booking p = new Booking(name, interval);
+			bookings.add(p);
+			return 0;
+		}
+		else 
+			return 1;
+	}
 	
-	
-		 }	
-		 return 2;
-	}	
 	public int deleteBooking(Resource r, String name, DateTime start, DateTime end) {
 		Iterator it = organizer.entrySet().iterator();
 		 while (it.hasNext()) {
