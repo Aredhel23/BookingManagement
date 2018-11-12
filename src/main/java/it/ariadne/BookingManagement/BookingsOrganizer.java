@@ -24,22 +24,15 @@ public class BookingsOrganizer {
 	}
 	
 	public boolean bookingRequest(Resource r, DateTime start, DateTime end) {
-		Iterator it = organizer.entrySet().iterator();
-		 while (it.hasNext()) {
-			    Map.Entry entry = (Map.Entry)it.next();
-			    if(entry.getKey().equals(r)) {
-			    	List<Booking> bookings = (ArrayList)entry.getValue();
-			    	Interval interval = new Interval(start, end);
-					for (Booking i:bookings) {
-						if(i.getInterval().overlaps(interval)) {
-							return false;
-						}
-					}
-					return true;
-			    }
-		 }
-		  
-		return false;
+
+		List<Booking> bookings = organizer.get(r);
+		Interval interval = new Interval(start, end);
+		for (Booking i:bookings) {
+			if(i.getInterval().overlaps(interval)) {
+				return false;
+			}
+		}
+		return true;		 
 	}
 	
 	public int addBooking(Resource r, String name, DateTime start, DateTime end) {
