@@ -60,8 +60,7 @@ public class BookingsOrganizer {
 	
 		 }	
 		 return 2;
-	}
-	
+	}	
 	public int deleteBooking(Resource r, String name, DateTime start, DateTime end) {
 		Iterator it = organizer.entrySet().iterator();
 		 while (it.hasNext()) {
