@@ -26,8 +26,14 @@ public class BookingsOrganizer {
 		 while (it.hasNext()) {
 			    Map.Entry entry = (Map.Entry)it.next();
 			    if(entry.getKey().equals(r)) {
-			    	Booking bookings = (Booking) entry.getValue();
-			    	
+			    	List<Booking> bookings = (ArrayList)entry.getValue();
+			    	Interval interval = new Interval(start, end);
+					for (Booking i:bookings) {
+						if(i.getInterval().overlaps(interval)) {
+							return false;
+						}
+					}
+					return true;
 			    }
 		 }
 		  
