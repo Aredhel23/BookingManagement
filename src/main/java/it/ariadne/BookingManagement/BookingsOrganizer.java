@@ -62,25 +62,17 @@ public class BookingsOrganizer {
 	}
 	
 	public DateTime firstAvailability(Resource r, Period p) {
-		Iterator it = organizer.entrySet().iterator();
-		 while (it.hasNext()) {
-			    Map.Entry entry = (Map.Entry)it.next();
-			    if(entry.getKey().equals(r)) {
-			    	boolean ret = true;
-			    	List<Booking> bookings = (ArrayList)entry.getValue();
-			    	DateTime start = new DateTime();
-			    	Period defPeriod = new Period().withHours(1);
-			    	while(ret) {
-			    		DateTime end = start.plus(p); 
-			    		if (bookingRequest(r, start, end))
-			    			return start;
-			    		ret = !bookingRequest(r, start, end);
-			    		start = start.plus(defPeriod);
-			    		
-			    	}
-			    }
-			    
-		 }
+    	boolean ret = true;
+    	DateTime start = new DateTime();
+    	Period defPeriod = new Period().withHours(1);
+    	while(ret) {
+    		DateTime end = start.plus(p); 
+    		if (bookingRequest(r, start, end))
+    			return start;
+    		ret = !bookingRequest(r, start, end);
+    		start = start.plus(defPeriod);
+    		
+    	}
 		return null;
 	}
 	
