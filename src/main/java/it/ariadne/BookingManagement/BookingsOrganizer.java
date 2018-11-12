@@ -10,9 +10,14 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
 public class BookingsOrganizer {
-	private Map<Resource, Booking> organizer= new LinkedHashMap<>();
+	private Map<Resource, List> organizer= new LinkedHashMap<>();
+	
+	
+	public BookingsOrganizer(Resource r) {
+		organizer.put(r, r.getList());
+	}
 
-	public Map<Resource, Booking> getOrganizer() {
+	public Map<Resource, List> getOrganizer() {		
 		return organizer;
 	}
 	
