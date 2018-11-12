@@ -103,7 +103,20 @@ public class BookingsOrganizer {
 		return  Collections.emptyList();
 	}
 	
-		 }
+	public List<DateTime> firstAvailability(String string, Period p, int limit) {
+		Iterator it = organizer.entrySet().iterator();
+		List<DateTime> dates = new ArrayList<>();
+		 while (it.hasNext()) {
+			    Map.Entry entry = (Map.Entry)it.next();
+			    Resource r = ((Resource) entry.getKey());
+			    if((r.getType()).equals(string) && r.getLimit() >= limit) {
+			    	DateTime start = firstAvailability((Resource)entry.getKey(), p);
+			    	DateTime end = start.plus(p);
+		    		dates.add(start);
+		    		dates.add(end);
+			    	return dates;	
+			    	}
+			    }		 
 		return  Collections.emptyList();
 	}
 }
