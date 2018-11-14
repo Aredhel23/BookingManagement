@@ -220,6 +220,29 @@ public class TestBooking {
 				"				+ una lista vuota", Collections.emptyList(), book2);
 	}
 	
+	@Test
+	public void testUserMyBookings() {
+		List<Booking> l = new ArrayList<>();
+		int colors = 256;
+		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
+		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
+		Resource res = new Projector(l, colors);
+		BookingsOrganizer ba = new BookingsOrganizer(res);
+		assertEquals("Se non ha mai fatto prenotazioni stampa dati utente: ", 
+				"Federica Bianchi abc@abc.it: ", person.myBookings(ba));
+		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
+		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
+		int a1 = ((User)person).addBooking(ba, res, "a", start, end);
+		Booking book = new Booking(person, "a", new Interval(start, end));
+		DateTime start1 = new DateTime(2009, 12, 25, 0, 0, 0, 0);
+		DateTime end1 = new DateTime(2009, 1, 1, 0, 0, 0, 0);
+		int a2 = ((User)person1).addBooking(ba, res, "a", start, end);
+		System.out.println(person.myBookings(ba));
+		assertEquals("Se hai fatto una prenotazione stampa dati utente e prenotazione ", 
+				"Federica Bianchi abc@abc.it: " + book + "\n", person.myBookings(ba));
+		
+		}
+	
 }
 
 
