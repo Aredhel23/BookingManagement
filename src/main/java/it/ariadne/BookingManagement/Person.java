@@ -38,5 +38,36 @@ public abstract class Person {
 		}
 		return s;
 	}
+	public String myFutureBookings(BookingsOrganizer ba) {
+		String s = this.toString();
+		Iterator it = ba.getOrganizer().entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+		    List<Booking> bookings = (List)entry.getValue();
+		    DateTime now = new DateTime();
+		    for (Booking b:bookings) {
+		    	if(b.getUser().equals(this) && b.getInterval().isAfter(now)) {
+		    		s = s + b.toString() + "\n";		    		
+		    	}
+		    }
+		}
+		return s;
+	}
+	public String myPastBookings(BookingsOrganizer ba) {
+
+		String s = this.toString();
+		Iterator it = ba.getOrganizer().entrySet().iterator();
+		while (it.hasNext()) {
+			Map.Entry entry = (Map.Entry)it.next();
+		    List<Booking> bookings = (List)entry.getValue();
+		    DateTime now = new DateTime();
+		    for (Booking b:bookings) {
+		    	if(b.getUser().equals(this) && b.getInterval().isBefore(now)) {
+		    		s = s + b.toString() + "\n";		    		
+		    	}
+		    }
+		}
+		return s;
+	}
 	
 }
