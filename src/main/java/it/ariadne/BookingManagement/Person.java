@@ -25,7 +25,7 @@ public abstract class Person {
 	}
 	
 	public String myBookings(BookingsOrganizer ba) {
-		String s = this.toString();
+		String s = this.toString() + "\n";
 		Iterator it = ba.getOrganizer().entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry entry = (Map.Entry)it.next();
@@ -39,7 +39,7 @@ public abstract class Person {
 		return s;
 	}
 	public String myFutureBookings(BookingsOrganizer ba) {
-		String s = this.toString();
+		String s = this.toString() + "\n";
 		Iterator it = ba.getOrganizer().entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry entry = (Map.Entry)it.next();
@@ -55,7 +55,7 @@ public abstract class Person {
 	}
 	public String myPastBookings(BookingsOrganizer ba) {
 
-		String s = this.toString();
+		String s = this.toString() + "\n";
 		Iterator it = ba.getOrganizer().entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry entry = (Map.Entry)it.next();

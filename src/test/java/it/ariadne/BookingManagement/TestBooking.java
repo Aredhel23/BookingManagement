@@ -9,6 +9,7 @@ import org.joda.time.Interval;
 import org.joda.time.Period;
 import org.junit.Test;
 
+import it.ariadne.BookingManagement.people.Admin;
 import it.ariadne.BookingManagement.people.User;
 import it.ariadne.BookingManagement.resorces.Projector;
 
@@ -229,7 +230,7 @@ public class TestBooking {
 		Resource res = new Projector(l, colors);
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		assertEquals("Se non ha mai fatto prenotazioni stampa dati utente: ", 
-				"Federica Bianchi abc@abc.it: ", person.myBookings(ba));
+				"Federica Bianchi abc@abc.it: \n", person.myBookings(ba));
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
 		int a1 = ((User)person).addBooking(ba, res, "a", start, end);
@@ -239,7 +240,7 @@ public class TestBooking {
 		int a2 = ((User)person1).addBooking(ba, res, "a", start, end);
 		System.out.println(person.myBookings(ba));
 		assertEquals("Se hai fatto una prenotazione stampa dati utente e prenotazione ", 
-				"Federica Bianchi abc@abc.it: " + book + "\n", person.myBookings(ba));		
+				"Federica Bianchi abc@abc.it: \n" + book + "\n", person.myBookings(ba));		
 		}
 	
 	@Test
@@ -254,14 +255,14 @@ public class TestBooking {
 		DateTime end1 = new DateTime(2010, 1, 1, 0, 0, 0, 0);
 		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);
 		assertEquals("Se hai fatto prenotazioni solo in passato stampa dati utente: ", 
-				"Federica Bianchi abc@abc.it: ", person.myBookings(ba));
+				"Federica Bianchi abc@abc.it: \n", person.myBookings(ba));
 		DateTime start = new DateTime(2019, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2020, 1, 1, 0, 0, 0, 0);
 		int a1 = ((User)person).addBooking(ba, res, "a", start, end);
 		Booking book = new Booking(person, "a", new Interval(start, end));
 		System.out.println(person.myFutureBookings(ba));
 		assertEquals("Se hai fatto una prenotazione futura stampa dati utente e prenotazione ", 
-				"Federica Bianchi abc@abc.it: " + book + "\n", person.myFutureBookings(ba));		
+				"Federica Bianchi abc@abc.it: \n" + book + "\n", person.myFutureBookings(ba));		
 		}
 	
 	@Test
@@ -276,14 +277,15 @@ public class TestBooking {
 		DateTime end1 = new DateTime(2020, 1, 1, 0, 0, 0, 0);
 		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);
 		assertEquals("Se hai fatto prenotazioni in futuro stampa dati utente: ", 
-				"Federica Bianchi abc@abc.it: ", person.myBookings(ba));
+				"Federica Bianchi abc@abc.it: \n", person.myBookings(ba));
 		DateTime start = new DateTime(2009, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2010, 1, 1, 0, 0, 0, 0);
 		int a1 = ((User)person).addBooking(ba, res, "a", start, end);
 		Booking book = new Booking(person, "a", new Interval(start, end));
 		assertEquals("Se hai fatto una prenotazione passata stampa dati utente e prenotazione ", 
-				"Federica Bianchi abc@abc.it: " + book + "\n", person.myPastBookings(ba));		
+				"Federica Bianchi abc@abc.it: \n" + book + "\n", person.myPastBookings(ba));		
 		}
+	
 	@Test
 	public void testAdminUserBookings() {
 		List<Booking> l = new ArrayList<>();
