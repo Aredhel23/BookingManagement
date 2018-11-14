@@ -17,7 +17,7 @@ public class User extends Person {
 
 
 	public int addBooking(BookingsOrganizer b, Resource r, String name, DateTime start, DateTime end) {
-		return b.addBooking(r, name, start, end);
+		return b.addBooking(this, r, name, start, end);
 	}
 
 
