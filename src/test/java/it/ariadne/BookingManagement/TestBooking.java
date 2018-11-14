@@ -19,7 +19,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
 		Interval interval = new Interval(start, end);
@@ -42,7 +43,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
 		int a1 = ba.addBooking(null, res, "a", start, end);
@@ -57,7 +59,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
 		int a1 = ba.addBooking(null, res, "a", start, end);
@@ -72,7 +75,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
 		DateTime book1 = ba.firstAvailability(res, p);
 		DateTime end = book1.withPeriodAdded(p, 1);
@@ -103,7 +107,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
 		List<DateTime> book1 = ba.firstAvailability("Projector", p, 256);
 		DateTime start = book1.get(0);
@@ -121,7 +126,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
@@ -136,7 +142,8 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
@@ -153,7 +160,8 @@ public class TestBooking {
 		int colors = 256;
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
 		Interval interval = new Interval(start, end);
@@ -175,7 +183,8 @@ public class TestBooking {
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
 		DateTime book1 = ((User)person).firstAvailability(ba, res, p);
 		DateTime end = book1.withPeriodAdded(p, 1);
@@ -208,7 +217,8 @@ public class TestBooking {
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		int colors = 256;
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
 		List<DateTime> book1 = ((User)person).firstAvailability(ba, "Projector", p, 256);
 		DateTime start = book1.get(0);
@@ -228,7 +238,8 @@ public class TestBooking {
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		assertEquals("Se non ha mai fatto prenotazioni stampa dati utente: ", 
 				"Federica Bianchi abc@abc.it: \n", person.myBookings(ba));
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
@@ -250,7 +261,8 @@ public class TestBooking {
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		DateTime start1 = new DateTime(2009, 12, 25, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2010, 1, 1, 0, 0, 0, 0);
 		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);
@@ -272,7 +284,8 @@ public class TestBooking {
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		DateTime start1 = new DateTime(2019, 12, 25, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2020, 1, 1, 0, 0, 0, 0);
 		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);
@@ -297,7 +310,8 @@ public class TestBooking {
 		users.add((User)person1);
 		Admin admin = new Admin("Mario", "Rossi", "cde@cde.it", "1234");
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		System.out.println(admin.userBookings(ba, users));
 		assertEquals("Se non ha mai fatto prenotazioni stampa dati utenti: ", 
 				"Federica Bianchi abc@abc.it: \nFederica Rossi abc@abc.it: \n", admin.userBookings(ba, users));
@@ -325,7 +339,8 @@ public class TestBooking {
 		users.add((User)person1);
 		Admin admin = new Admin("Mario", "Rossi", "cde@cde.it", "1234");
 		Resource res = new Projector(l, colors);
-		BookingsOrganizer ba = new BookingsOrganizer(res);
+		BookingsOrganizer ba = new BookingsOrganizer();
+		ba.getOrganizer().put(res, res.getList());
 		assertEquals("Se non ha mai fatto prenotazioni stampa Risorsa: ", 
 				"Projector [colors=" + 256 + ", type=" + "Projector]:\n", admin.resourceBookings(ba));
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
