@@ -343,6 +343,56 @@ public class TestBooking {
 						+ book1 + "\n",s);
 	}
 	
+	@Test
+	public void testAddResource() {
+		Resource res = new Projector(new ArrayList<Booking>(), 256);
+		Resource res1 = new Projector(new ArrayList<Booking>(), 512);
+		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
+		BookingsOrganizer ba = new BookingsOrganizer();
+		int a1 = admin.addResource(ba, res1);
+		int a2 = admin.addResource(ba, res1);
+		assertEquals("Se una risorsa è aggiunta il metodo ritorna 0", 0, a1);
+		assertEquals("Se una risorsa non è aggiunta il metodo ritorna 1", 1, a2);
+	}
+	@Test
+	public void testDeleteResource() {
+		Resource res = new Projector(new ArrayList<Booking>(), 256);
+		Resource res1 = new Projector(new ArrayList<Booking>(), 512);
+		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
+		BookingsOrganizer ba = new BookingsOrganizer();
+		int a3 = admin.addResource(ba, res);
+		int a4 = admin.addResource(ba, res1);
+		int a1 = admin.deleteResource(ba, res);
+		int a2 = admin.deleteResource(ba, res);
+		assertEquals("Se una risorsa è cancellata il metodo ritorna 0", 0, a1);
+		assertEquals("Se una risorsa non è cancellata il metodo ritorna 1", 1, a2);
+	}
+	
+	@Test
+	public void testReadResource() {
+		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
+		BookingsOrganizer ba = new BookingsOrganizer();
+		Resource res = new Projector(new ArrayList<Booking>(), 256);
+		String a1 = admin.readResource(ba, res);
+		assertEquals("Se nessuna risorsa è presente il metodo ritorna Risorese: ", "Risorsa: \n", a1);
+		admin.addResource(ba, res);
+		String a2 = admin.readResource(ba, res);
+		assertEquals("Se una risorsa è presente il metodo ritorna Risorsa: e i dati della risorsa", "Risorsa: \n" + res.toString(), a2);	
+	}
+	
+	@Test
+	public void testUpdateResource() {
+		Resource res = new Projector(new ArrayList<Booking>(), 256);
+		Resource res1 = new Projector(new ArrayList<Booking>(), 512);
+		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
+		BookingsOrganizer ba = new BookingsOrganizer();
+		int a3 = admin.addResource(ba, res);
+		int a1 = admin.updateResource(ba, res, res1);
+		int a2 = admin.updateResource(ba, res, res1);
+		assertEquals("Se una risorsa è aggiornata il metodo ritorna 0", 0, a1);
+		assertEquals("Se una risorsa non è aggiornata il metodo ritorna 1", 1, a2);
+	}
+	
 }
 
 
