@@ -22,7 +22,7 @@ public class TestBooking {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
 		Interval interval = new Interval(start, end);
-		Booking b = new Booking("a", interval);
+		Booking b = new Booking(null, "a", interval);
 		l.add(b);
 		DateTime start1 = new DateTime(2004, 12, 31, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2005, 1, 1, 0, 0, 0, 0);
@@ -44,8 +44,8 @@ public class TestBooking {
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
-		int a1 = ba.addBooking(res, "a", start, end);
-		int a2 = ba.addBooking(res, "b", start, end);		
+		int a1 = ba.addBooking(null, res, "a", start, end);
+		int a2 = ba.addBooking(null, res, "b", start, end);		
 		assertEquals("Se una prenotazione della risorsa è aggiunta il metodo ritorna 0", 0, a1);
 		assertEquals("Se una prenotazione della risorsa non è aggiunta il metodo ritorna 1", 1, a2);
 		
@@ -59,7 +59,7 @@ public class TestBooking {
 		BookingsOrganizer ba = new BookingsOrganizer(res);
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
-		int a1 = ba.addBooking(res, "a", start, end);
+		int a1 = ba.addBooking(null, res, "a", start, end);
 		int a3 = ba.deleteBooking(res, "a", start, end);
 		int a2 = ba.deleteBooking(res, "b", start, end);	
 		assertEquals("Se una prenotazione della risorsa è cancellata il metodo ritorna 0", 0, a3);
@@ -75,16 +75,16 @@ public class TestBooking {
 		Period p = new Period().withHours(3);
 		DateTime book1 = ba.firstAvailability(res, p);
 		DateTime end = book1.withPeriodAdded(p, 1);
-		ba.addBooking(res, "a", book1, end);
+		ba.addBooking(null, res, "a", book1, end);
 		DateTime book2 =  ba.firstAvailability(res, p);
 		DateTime d = new DateTime();
 		end = book2.withPeriodAdded(p, 1);
-		ba.addBooking(res, "b", book2, end);
+		ba.addBooking(null, res, "b", book2, end);
 		DateTime start1 = new DateTime(2018, 1, 1, 1, 0, 0, 0);
 		DateTime end1 = new DateTime(2018, 1, 1, 5, 0, 0, 0); 
 		List<DateTime> book3 = ba.firstAvailability(res, p, start1, end1);
 		if(!book3.isEmpty())
-			ba.addBooking(res, "b", book3.get(0), book3.get(1));
+			ba.addBooking(null, res, "b", book3.get(0), book3.get(1));
 		List<DateTime> book4 = ba.firstAvailability(res, p, start1, end1);
 		assertEquals("Se una prenotazione di 3 ore a partire dal presente è possibile torna il"
 				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book1.getHourOfDay());
@@ -156,7 +156,7 @@ public class TestBooking {
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
 		Interval interval = new Interval(start, end);
-		Booking b = new Booking("a", interval);
+		Booking b = new Booking((User)person, "a", interval);
 		l.add(b);
 		DateTime start1 = new DateTime(2004, 12, 31, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2005, 1, 1, 0, 0, 0, 0);
