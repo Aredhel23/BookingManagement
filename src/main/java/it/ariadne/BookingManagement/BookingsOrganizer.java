@@ -10,15 +10,13 @@ import java.util.Map;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.Period;
-
 import it.ariadne.BookingManagement.people.User;
 
 public class BookingsOrganizer {
 	private Map<Resource, List> organizer= new LinkedHashMap<>();
-	
-	
-	public BookingsOrganizer(Resource r) {
-		organizer.put(r, r.getList());
+
+	public BookingsOrganizer() {
+		
 	}
 
 	public Map<Resource, List> getOrganizer() {		
