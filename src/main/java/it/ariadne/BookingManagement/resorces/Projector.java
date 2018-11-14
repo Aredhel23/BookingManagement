@@ -38,6 +38,23 @@ public class Projector implements Resource {
 	}
 
 
+	@Override
+	public String bookingPrintList() {
+		String s = this.toString();
+		for(Booking b:projectorList) {
+			s = s + b.toString() + "\n";
+		}
+		return s;
+	}
+
+
+	@Override
+	public String toString() {
+		return "Projector [colors=" + colors + ", type=" + type + "]:\n";
+	}
+	
+
+
 
 
 

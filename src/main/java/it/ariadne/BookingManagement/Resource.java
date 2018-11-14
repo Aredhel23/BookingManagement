@@ -8,4 +8,6 @@ public interface Resource {
 	public List<Booking> getList();
 	public String getType();
 	public int getLimit();
+	public String bookingPrintList();
+	
 }
