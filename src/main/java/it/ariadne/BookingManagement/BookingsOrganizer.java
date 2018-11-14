@@ -11,6 +11,8 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.Period;
 
+import it.ariadne.BookingManagement.people.User;
+
 public class BookingsOrganizer {
 	private Map<Resource, List> organizer= new LinkedHashMap<>();
 	
@@ -35,12 +37,12 @@ public class BookingsOrganizer {
 		return true;		 
 	}
 	
-	public int addBooking(Resource r, String name, DateTime start, DateTime end) {
+	public int addBooking(Person u, Resource r, String name, DateTime start, DateTime end) {
 		
     	List<Booking> bookings = organizer.get(r);
 		if(bookingRequest(r, start, end)) {
 			Interval interval = new Interval(start, end);
-			Booking p = new Booking(name, interval);
+			Booking p = new Booking(u, name, interval);
 			bookings.add(p);
 			return 0;
 		}
@@ -119,6 +121,9 @@ public class BookingsOrganizer {
 			    }		 
 		return  Collections.emptyList();
 	}
+
+
+	
 }
 
 
