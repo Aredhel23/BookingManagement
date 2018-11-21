@@ -256,13 +256,13 @@ public class TestBooking {
 	
 	@Test
 	public void testUserMyBookingsFuture() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
 		DateTime start1 = new DateTime(2009, 12, 25, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2010, 1, 1, 0, 0, 0, 0);
 		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);
@@ -270,9 +270,9 @@ public class TestBooking {
 				"Federica Bianchi abc@abc.it: \n", person.myBookings(ba));
 		DateTime start = new DateTime(2019, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2020, 1, 1, 0, 0, 0, 0);
-		int a1 = ((User)person).addBooking(ba, res, "a", start, end);
+		int a1 = ((User)person).addBooking(ba, res, "a", start, end); // "a" is the name of the booking
 		Booking book = new Booking(person, "a", new Interval(start, end));
-		System.out.println(person.myFutureBookings(ba));
+		System.out.println(person.myFutureBookings(ba)); // prints the future bookings of the user
 		assertEquals("Se hai fatto una prenotazione futura stampa dati utente e prenotazione ", 
 				"Federica Bianchi abc@abc.it: \n" + book + "\n", person.myFutureBookings(ba));		
 		}
