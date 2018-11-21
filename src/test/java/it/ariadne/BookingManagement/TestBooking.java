@@ -419,12 +419,11 @@ public class TestBooking {
 	@Test
 	public void testUpdateResource() {
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
-		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
 		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		int a3 = admin.addResource(ba, res);
-		int a1 = admin.updateResource(ba, res, res1);
-		int a2 = admin.updateResource(ba, res, res1); // you cannot update two times a resource already updated
+		int a1 = admin.updateResource(ba, res, 512);
+		int a2 = admin.updateResource(ba, res, 512); // you cannot update two times a resource already updated
 		assertEquals("Se una risorsa è aggiornata il metodo ritorna 0", 0, a1);
 		assertEquals("Se una risorsa non è aggiornata il metodo ritorna 1", 1, a2);
 	}
