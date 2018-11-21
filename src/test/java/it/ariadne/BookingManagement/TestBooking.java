@@ -179,25 +179,25 @@ public class TestBooking {
 	}
 	@Test
 	public void testUserFirstAvailability() {
-		List<Booking> l = new ArrayList<>();
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
-		int colors = 256;
+		int colors = 256;  // limit of the projector
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
-		Period p = new Period().withHours(3);
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
+		Period p = new Period().withHours(3); // duration of the booking you want
 		DateTime book1 = ((User)person).firstAvailability(ba, res, p);
-		DateTime end = book1.withPeriodAdded(p, 1);
-		((User)person).addBooking(ba, res, "a", book1, end);
+		DateTime end = book1.withPeriodAdded(p, 1); // added one time the period
+		((User)person).addBooking(ba, res, "a", book1, end); // "a" is the name of the booking
 		DateTime book2 =  ba.firstAvailability(res, p);
 		DateTime d = new DateTime();
-		end = book2.withPeriodAdded(p, 1);
-		((User)person).addBooking(ba, res, "b", book2, end);
+		end = book2.withPeriodAdded(p, 1); // added one time the period
+		((User)person).addBooking(ba, res, "b", book2, end); // "b" is the name of the booking
 		DateTime start1 = new DateTime(2018, 1, 1, 1, 0, 0, 0);
 		DateTime end1 = new DateTime(2018, 1, 1, 5, 0, 0, 0); 
 		List<DateTime> book3 = ((User)person).firstAvailability(ba, res, p, start1, end1);
 		if(!book3.isEmpty())
-			((User)person).addBooking(ba, res, "b", book3.get(0), book3.get(1));
+			((User)person).addBooking(ba, res, "b", book3.get(0), book3.get(1)); // "b" is the name of the booking
 		List<DateTime> book4 = ((User)person).firstAvailability(ba, res, p, start1, end1);
 		assertEquals("Se una prenotazione di 3 ore a partire dal presente è possibile torna il"
 				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book1.getHourOfDay());
