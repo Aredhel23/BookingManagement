@@ -51,4 +51,14 @@ public class Car implements Resource {
 		return "Car [name =" + name + "seats=" + seats + ", type=" + type + "]:\n";
 	}
 
+	@Override
+	public int setLimit(int lim) {
+		if (lim == this.seats)
+			return 1;
+		else {
+			this.seats = lim;
+			return 0;
+		}
+	}
+
 }

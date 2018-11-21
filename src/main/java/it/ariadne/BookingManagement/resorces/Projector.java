@@ -60,6 +60,17 @@ public class Projector implements Resource {
 	public String toString() {
 		return "Projector [colors=" + colors + ", type=" + type + "]:\n";
 	}
+
+
+	@Override
+	public int setLimit(int lim) {
+		if (lim == this.colors)
+			return 1;
+		else {
+			this.colors = lim;
+			return 0;
+		}
+	}
 	
 
 
