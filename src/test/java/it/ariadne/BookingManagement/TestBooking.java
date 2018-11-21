@@ -72,24 +72,24 @@ public class TestBooking {
 	
 	@Test
 	public void testFirstAvailability() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
 		Period p = new Period().withHours(3);
 		DateTime book1 = ba.firstAvailability(res, p);
 		DateTime end = book1.withPeriodAdded(p, 1);
-		ba.addBooking(null, res, "a", book1, end);
+		ba.addBooking(null, res, "a", book1, end); // null because there are not the users yet
 		DateTime book2 =  ba.firstAvailability(res, p);
 		DateTime d = new DateTime();
 		end = book2.withPeriodAdded(p, 1);
-		ba.addBooking(null, res, "b", book2, end);
+		ba.addBooking(null, res, "b", book2, end); // null because there are not the users yet
 		DateTime start1 = new DateTime(2018, 1, 1, 1, 0, 0, 0);
 		DateTime end1 = new DateTime(2018, 1, 1, 5, 0, 0, 0); 
 		List<DateTime> book3 = ba.firstAvailability(res, p, start1, end1);
 		if(!book3.isEmpty())
-			ba.addBooking(null, res, "b", book3.get(0), book3.get(1));
+			ba.addBooking(null, res, "b", book3.get(0), book3.get(1)); // null because there are not the users yet
 		List<DateTime> book4 = ba.firstAvailability(res, p, start1, end1);
 		assertEquals("Se una prenotazione di 3 ore a partire dal presente è possibile torna il"
 				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book1.getHourOfDay());
