@@ -156,16 +156,16 @@ public class TestBooking {
 	
 	@Test
 	public void testUserBookingRequest() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
 		Interval interval = new Interval(start, end);
-		Booking b = new Booking((User)person, "a", interval);
+		Booking b = new Booking((User)person, "a", interval); // "a" is the name of the booking
 		l.add(b);
 		DateTime start1 = new DateTime(2004, 12, 31, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2005, 1, 1, 0, 0, 0, 0);
