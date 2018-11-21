@@ -1,5 +1,6 @@
 package it.ariadne.BookingManagement.resorces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -12,10 +13,24 @@ public class Projector implements Resource {
 	
 	private List<Booking> projectorList;
 	private int colors;
+	private String name;
 	private String type = "Projector";
-	public Projector(List<Booking> l, int colors) {
+	/***
+	 * constructor of the projector.
+	 * @param l list of the bookings of the projector.
+	 * @param colors limit of the projector.
+	 * @param name  the name of the projector.
+	 */
+	public Projector(List<Booking> l, int colors, String name) {
 		this.projectorList = l;
 		this.colors = colors;
+		this.name = name;
+	}
+	
+	public Projector(String name, int colors) {
+		this.projectorList = new ArrayList<>();
+		this.colors = colors;
+		this.name = name;
 	}
 	
 
@@ -51,6 +66,17 @@ public class Projector implements Resource {
 	@Override
 	public String toString() {
 		return "Projector [colors=" + colors + ", type=" + type + "]:\n";
+	}
+
+
+	@Override
+	public int setLimit(int lim) {
+		if (lim == this.colors)
+			return 1;
+		else {
+			this.colors = lim;
+			return 0;
+		}
 	}
 	
 
