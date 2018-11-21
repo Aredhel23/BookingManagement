@@ -11,18 +11,33 @@ import org.joda.time.DateTime;
 import org.joda.time.Interval;
 import org.joda.time.Period;
 import it.ariadne.BookingManagement.people.User;
-
+/***
+ * Class where are stored all the bookings for each resource.
+ * @author amato
+ *
+ */
 public class BookingsOrganizer {
 	private Map<Resource, List> organizer= new LinkedHashMap<>();
-
+	/***
+	 * Constructor of a Booking Organizer
+	 */
 	public BookingsOrganizer() {
 		
 	}
-
+	/***
+	 * it gets the map of the entire booking organizer.
+	 * @return the map of the entire booking organizer.
+	 */
 	public Map<Resource, List> getOrganizer() {		
 		return organizer;
 	}
-	
+	/***
+	 * It finds the first dateTime when the resource is available for the selected period
+	 * @param r resource you want to book.
+	 * @param start start date.
+	 * @param end end date.
+	 * @return true if it is available, false if the resource is busy.
+	 */
 	public boolean bookingRequest(Resource r, DateTime start, DateTime end) {
 
 		List<Booking> bookings = organizer.get(r);
@@ -35,6 +50,15 @@ public class BookingsOrganizer {
 		return true;		 
 	}
 	
+	/***
+	 * it adds a booking of a resource between two date.
+	 * @param u user that makes the booking.
+	 * @param r resource you want to book.
+	 * @param name name of the booking.
+	 * @param start start date.
+	 * @param end end date.
+	 * @return  0 if the booking is added, 1 if the booking is not added.
+	 */
 	public int addBooking(Person u, Resource r, String name, DateTime start, DateTime end) {
 		
     	List<Booking> bookings = organizer.get(r);
@@ -48,6 +72,14 @@ public class BookingsOrganizer {
 			return 1;
 	}
 	
+	/***
+	 * it deletes a booking of a resource.
+	 * @param r resource you want to delete booking.
+	 * @param string name of the booking.
+	 * @param start start date.
+	 * @param end end date.
+	 * @return  0 if the booking is deleted, 1 if the booking is not deleted
+	 */
 	public int deleteBooking(Resource r, String name, DateTime start, DateTime end) {	
 		
     	List<Booking> bookings = organizer.get(r);
@@ -61,6 +93,12 @@ public class BookingsOrganizer {
 		return 1;
 	}
 	
+	/***
+	 * It finds the first dateTime when the resource is available for the selected period.
+	 * @param res resource you want to book.
+	 * @param p period you want to book.
+	 * @return the first dateTime starting from the resource is available for the period selected.
+	 */
 	public DateTime firstAvailability(Resource r, Period p) {
     	boolean ret = true;
     	DateTime start = new DateTime();
@@ -76,6 +114,15 @@ public class BookingsOrganizer {
 		return null;
 	}
 	
+	/***
+	 * It finds the first dateTime when the resource is available for the selected period 
+	 * between two date.
+	 * @param res resource you want to book.
+	 * @param p period you want to book.
+	 * @param start1 start date you check from.
+	 * @param end1 max date you want.
+	 * @return list with the start dateTime and the endTime.
+	 */
 	public List<DateTime> firstAvailability(Resource r, Period p, DateTime start, DateTime end) {
 		List<DateTime> dates = new ArrayList<>();
     	boolean ret = true;
@@ -103,6 +150,13 @@ public class BookingsOrganizer {
 		return  Collections.emptyList();
 	}
 	
+	/***
+	 * It finds the first dateTime when the type resource with the limit selected is available
+	 * @param string type of resource you want to book.
+	 * @param p period you want to book.
+	 * @param limit under limit you want to be satisfied 
+	 * @return list with the start dateTime and the endTime.
+	 */
 	public List<DateTime> firstAvailability(String string, Period p, int limit) {
 		Iterator it = organizer.entrySet().iterator();
 		List<DateTime> dates = new ArrayList<>();
