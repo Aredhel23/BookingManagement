@@ -103,14 +103,13 @@ public class Admin extends Person {
 	 * @param res1 the new resource to update.
 	 * @return 0 if the resource is updated, 1 otherwise.
 	 */
-	public int updateResource(BookingsOrganizer ba, Resource res, Resource res1) {
+	public int updateResource(BookingsOrganizer ba, Resource res, int lim1) {
+		int result = 1;
 		if(ba.getOrganizer().containsKey(res)) {
-			ba.getOrganizer().remove(res);
-			(ba.getOrganizer()).put(res1, res1.getList());
-		return 0;
+			result = res.setLimit(lim1);			
+		    
 		}
-		else
-			return 1;
+		return result;
 	}
 	
 	
