@@ -32,7 +32,7 @@ public class User extends Person {
 	 * @param name name of the booking.
 	 * @param start start date.
 	 * @param end end date.
-	 * @return 0 if the booking is added, 1 if the booking is not added
+	 * @return 0 if the booking is added, 1 if the booking is not added.
 	 */
 	public int addBooking(BookingsOrganizer b, Resource r, String name, DateTime start, DateTime end) {
 		return b.addBooking(this, r, name, start, end);
