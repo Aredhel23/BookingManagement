@@ -1,5 +1,6 @@
 package it.ariadne.BookingManagement.resorces;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -22,6 +23,12 @@ public class Projector implements Resource {
 	 */
 	public Projector(List<Booking> l, int colors, String name) {
 		this.projectorList = l;
+		this.colors = colors;
+		this.name = name;
+	}
+	
+	public Projector(String name, int colors) {
+		this.projectorList = new ArrayList<>();
 		this.colors = colors;
 		this.name = name;
 	}
