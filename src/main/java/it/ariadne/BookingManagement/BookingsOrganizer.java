@@ -107,8 +107,10 @@ public class BookingsOrganizer {
     		DateTime end = start.plus(p); 
     		if (bookingRequest(r, start, end))
     			return start;
-    		ret = !bookingRequest(r, start, end);
-    		start = start.plus(defPeriod);
+    		else {
+	    		ret = !bookingRequest(r, start, end);
+	    		start = start.plus(defPeriod);
+    		}
     		
     	}
 		return null;
@@ -140,7 +142,7 @@ public class BookingsOrganizer {
 	    		start1 = start1.plus(defPeriod);
     		}
     		else {
-    			return Collections.emptyList();
+    			break;
     		}
     		
     	}
