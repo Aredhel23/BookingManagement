@@ -12,10 +12,18 @@ public class Projector implements Resource {
 	
 	private List<Booking> projectorList;
 	private int colors;
+	private String name;
 	private String type = "Projector";
-	public Projector(List<Booking> l, int colors) {
+	/***
+	 * constructor of the projector.
+	 * @param l list of the bookings of the projector.
+	 * @param colors limit of the projector.
+	 * @param name  the name of the projector.
+	 */
+	public Projector(List<Booking> l, int colors, String name) {
 		this.projectorList = l;
 		this.colors = colors;
+		this.name = name;
 	}
 	
 
