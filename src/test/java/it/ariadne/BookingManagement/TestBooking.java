@@ -11,6 +11,7 @@ import org.junit.Test;
 
 import it.ariadne.BookingManagement.people.Admin;
 import it.ariadne.BookingManagement.people.User;
+import it.ariadne.BookingManagement.resorces.Car;
 import it.ariadne.BookingManagement.resorces.Projector;
 
 public class TestBooking {
@@ -217,18 +218,25 @@ public class TestBooking {
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		int colors = 256; // limit of the projector
 		Resource res = new Projector(l, colors, "projector");
+		Resource res2 = new Car("porche cayenne", 5);
 		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
+		ba.getOrganizer().put(res2, res2.getList()); // add the resource and its booking array in the organizer
 		Period p = new Period().withHours(3); // duration of the booking you want
 		List<DateTime> book1 = ((User)person).firstAvailability(ba, "Projector", p, 256);
+		List<DateTime> book3 = ((User)person).firstAvailability(ba, "Car", p, 4);
 		DateTime start = book1.get(0); // start DateTime found
 		DateTime end = book1.get(1); // end DateTime found
+		DateTime start1 = book3.get(0); // start DateTime found
+		DateTime end1 = book3.get(1); // end DateTime found
 		DateTime d = new DateTime(); // DateTime of the present
 		List<DateTime> book2 = ((User)person).firstAvailability(ba, "Projector", p, 512);
 		assertEquals("Se una prenotazione di 3 ore a partire dal presente con il limite a 256 è possibile torna il"
 				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book1.get(0).getHourOfDay());
 		assertEquals("Se una prenotazione di 3 ore a partire dal presente con il limite a 256 non  è possibile torna il\"\r\n" + 
 				"				+ una lista vuota", Collections.emptyList(), book2);
+		assertEquals("Se una prenotazione di 3 ore a partire dal presente con il limite a 5 è possibile torna il"
+				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book3.get(0).getHourOfDay());
 	}
 	
 	@Test
@@ -356,6 +364,10 @@ public class TestBooking {
 		assertEquals("Se hai fatto una prenotazione con il proiettore stampa dati risorsa e sue prenotazioni ", 
 				"Projector [colors=" + 256 + ", type=" + "Projector]:\n" + book + "\n"
 						+ book1 + "\n",s);
+		Resource res2 = new Car("porche cayenne", 5);
+		admin.addResource(ba, res2);
+		int a4 = ((User)person1).addBooking(ba, res2, "a", start1, end1);  // "a" is the name of the booking
+		String s1  = admin.resourceBookings(ba);
 	}
 	
 	@Test
@@ -373,13 +385,17 @@ public class TestBooking {
 	public void testDeleteResource() {
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
+		Resource res2 = new Car("porche cayenne", 5);
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
 		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		int a3 = admin.addResource(ba, res);
+		int a5 = admin.addResource(ba, res2);
 		int a4 = admin.addResource(ba, res1);
 		int a1 = admin.deleteResource(ba, res);
+		int a6 = admin.deleteResource(ba, res2);
 		int a2 = admin.deleteResource(ba, res); // you cannot delete a resource not present
 		assertEquals("Se una risorsa è cancellata il metodo ritorna 0", 0, a1);
+		assertEquals("Se una risorsa è cancellata il metodo ritorna 0", 0, a6);
 		assertEquals("Se una risorsa non è cancellata il metodo ritorna 1", 1, a2);
 	}
 	
@@ -389,10 +405,15 @@ public class TestBooking {
 		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		String a1 = admin.readResource(ba, res);
-		assertEquals("Se nessuna risorsa è presente il metodo ritorna Risorese: ", "Risorsa: \n", a1);
+		assertEquals("Se nessuna risorsa è presente il metodo ritorna Risorse: ", "Risorsa: \n", a1);
 		admin.addResource(ba, res);
-		String a2 = admin.readResource(ba, res);
+		Resource res2 = new Car("porche cayenne", 5);		
+		String a2 = admin.readResource(ba, res);		
 		assertEquals("Se una risorsa è presente il metodo ritorna Risorsa: e i dati della risorsa", "Risorsa: \n" + res.toString(), a2);	
+		admin.deleteResource(ba, res);
+		admin.addResource(ba, res2);
+		String a3 = admin.readResource(ba, res2);
+		assertEquals("Se una risorsa è presente il metodo ritorna Risorsa: e i dati della risorsa", "Risorsa: \n" + res2.toString(), a3);
 	}
 	
 	@Test
