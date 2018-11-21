@@ -16,26 +16,26 @@ import it.ariadne.BookingManagement.resorces.Projector;
 public class TestBooking {
 	@Test
 	public void testBookingRequest() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
-		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
+		Resource res = new Projector(l, colors, "projector"); 
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);		
-		Interval interval = new Interval(start, end);
-		Booking b = new Booking(null, "a", interval);
-		l.add(b);
+		Interval interval = new Interval(start, end); 
+		Booking b = new Booking(null, "a", interval); // null because there are not the users yet
+		l.add(b); // add the booking to the list, so in the test will be busy
 		DateTime start1 = new DateTime(2004, 12, 31, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2005, 1, 1, 0, 0, 0, 0);
-		boolean bookingreq = ba.bookingRequest(res, start1, end1);
+		boolean bookingreq = ba.bookingRequest(res, start1, end1); 
 		DateTime start2 = new DateTime(2014, 12, 26, 0, 0, 0, 0);
 		DateTime end2 = new DateTime(2015, 1, 1, 0, 0, 0, 0);
 		boolean bookingreq1 = ba.bookingRequest(res, start2, end2);
 		// Assert first
 		System.out.println(ba.getOrganizer());
 		assertEquals("Se una risorsa è occupata la richiesta torna falso", false, bookingreq);
-		//assertEquals("Se una risorsa è libera la richiesta torna vero", true, bookingreq1);
+		assertEquals("Se una risorsa è libera la richiesta torna vero", true, bookingreq1);
 	}
 	
 	@Test
