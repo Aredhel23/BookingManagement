@@ -363,9 +363,9 @@ public class TestBooking {
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
-		BookingsOrganizer ba = new BookingsOrganizer();
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		int a1 = admin.addResource(ba, res1);
-		int a2 = admin.addResource(ba, res1);
+		int a2 = admin.addResource(ba, res1); // You cannot add two times the same resource 
 		assertEquals("Se una risorsa è aggiunta il metodo ritorna 0", 0, a1);
 		assertEquals("Se una risorsa non è aggiunta il metodo ritorna 1", 1, a2);
 	}
@@ -374,11 +374,11 @@ public class TestBooking {
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
-		BookingsOrganizer ba = new BookingsOrganizer();
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		int a3 = admin.addResource(ba, res);
 		int a4 = admin.addResource(ba, res1);
 		int a1 = admin.deleteResource(ba, res);
-		int a2 = admin.deleteResource(ba, res);
+		int a2 = admin.deleteResource(ba, res); // you cannot delete a resource not present
 		assertEquals("Se una risorsa è cancellata il metodo ritorna 0", 0, a1);
 		assertEquals("Se una risorsa non è cancellata il metodo ritorna 1", 1, a2);
 	}
@@ -386,7 +386,7 @@ public class TestBooking {
 	@Test
 	public void testReadResource() {
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
-		BookingsOrganizer ba = new BookingsOrganizer();
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		String a1 = admin.readResource(ba, res);
 		assertEquals("Se nessuna risorsa è presente il metodo ritorna Risorese: ", "Risorsa: \n", a1);
@@ -400,10 +400,10 @@ public class TestBooking {
 		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
-		BookingsOrganizer ba = new BookingsOrganizer();
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
 		int a3 = admin.addResource(ba, res);
 		int a1 = admin.updateResource(ba, res, res1);
-		int a2 = admin.updateResource(ba, res, res1);
+		int a2 = admin.updateResource(ba, res, res1); // you cannot update two times a resource already updated
 		assertEquals("Se una risorsa è aggiornata il metodo ritorna 0", 0, a1);
 		assertEquals("Se una risorsa non è aggiornata il metodo ritorna 1", 1, a2);
 	}
