@@ -26,4 +26,5 @@ public interface Resource {
 	 */
 	public String bookingPrintList();
 	
+	public int setLimit(int lim);
 }
