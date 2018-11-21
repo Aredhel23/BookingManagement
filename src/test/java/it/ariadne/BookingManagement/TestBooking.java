@@ -330,8 +330,8 @@ public class TestBooking {
 	}
 	@Test
 	public void testAdminResorceBookings() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
 		List<User> users = new ArrayList<>();
@@ -339,18 +339,18 @@ public class TestBooking {
 		users.add((User)person1);
 		Admin admin = new Admin("Mario", "Rossi", "cde@cde.it", "1234");
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
 		assertEquals("Se non ha mai fatto prenotazioni stampa Risorsa: ", 
 				"Projector [colors=" + 256 + ", type=" + "Projector]:\n", admin.resourceBookings(ba));
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
-		int a1 = ((User)person).addBooking(ba, res, "a", start, end);
-		Booking book = new Booking(person, "a", new Interval(start, end));		
+		int a1 = ((User)person).addBooking(ba, res, "a", start, end);  // "a" is the name of the booking
+		Booking book = new Booking(person, "a", new Interval(start, end));  // "a" is the name of the booking	
 		DateTime start1 = new DateTime(2009, 12, 25, 0, 0, 0, 0);
 		DateTime end1 = new DateTime(2010, 1, 1, 0, 0, 0, 0);
-		Booking book1 = new Booking(person1, "a", new Interval(start1, end1));
-		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);
+		Booking book1 = new Booking(person1, "a", new Interval(start1, end1));  // "a" is the name of the booking
+		int a2 = ((User)person1).addBooking(ba, res, "a", start1, end1);  // "a" is the name of the booking
 		System.out.println(person.myBookings(ba));
 		String s  = admin.resourceBookings(ba);
 		assertEquals("Se hai fatto una prenotazione con il proiettore stampa dati risorsa e sue prenotazioni ", 
