@@ -18,7 +18,7 @@ public class TestBooking {
 	public void testBookingRequest() {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
@@ -42,7 +42,7 @@ public class TestBooking {
 	public void testBooked() {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
@@ -58,7 +58,7 @@ public class TestBooking {
 	public void testDeleteBooked() {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
@@ -74,7 +74,7 @@ public class TestBooking {
 	public void testFirstAvailability() {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
@@ -106,7 +106,7 @@ public class TestBooking {
 	public void testFirstAvailabilityLimit() {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
@@ -125,7 +125,7 @@ public class TestBooking {
 	public void TestUserAddBooking(){
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
@@ -141,7 +141,7 @@ public class TestBooking {
 	public void TestUserDeleteBooking(){
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
@@ -159,7 +159,7 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		int colors = 256;
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
@@ -182,7 +182,7 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
@@ -216,7 +216,7 @@ public class TestBooking {
 		List<Booking> l = new ArrayList<>();
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		int colors = 256;
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		Period p = new Period().withHours(3);
@@ -237,7 +237,7 @@ public class TestBooking {
 		int colors = 256;
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		assertEquals("Se non ha mai fatto prenotazioni stampa dati utente: ", 
@@ -260,7 +260,7 @@ public class TestBooking {
 		int colors = 256;
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		DateTime start1 = new DateTime(2009, 12, 25, 0, 0, 0, 0);
@@ -283,7 +283,7 @@ public class TestBooking {
 		int colors = 256;
 		Person person = new User("Federica", "Bianchi", "abc@abc.it", "123");
 		Person person1 = new User("Federica", "Rossi", "abc@abc.it", "123");
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		DateTime start1 = new DateTime(2019, 12, 25, 0, 0, 0, 0);
@@ -309,7 +309,7 @@ public class TestBooking {
 		users.add((User)person);
 		users.add((User)person1);
 		Admin admin = new Admin("Mario", "Rossi", "cde@cde.it", "1234");
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		System.out.println(admin.userBookings(ba, users));
@@ -338,7 +338,7 @@ public class TestBooking {
 		users.add((User)person);
 		users.add((User)person1);
 		Admin admin = new Admin("Mario", "Rossi", "cde@cde.it", "1234");
-		Resource res = new Projector(l, colors);
+		Resource res = new Projector(l, colors, "projector");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		ba.getOrganizer().put(res, res.getList());
 		assertEquals("Se non ha mai fatto prenotazioni stampa Risorsa: ", 
@@ -360,8 +360,8 @@ public class TestBooking {
 	
 	@Test
 	public void testAddResource() {
-		Resource res = new Projector(new ArrayList<Booking>(), 256);
-		Resource res1 = new Projector(new ArrayList<Booking>(), 512);
+		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
+		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		int a1 = admin.addResource(ba, res1);
@@ -371,8 +371,8 @@ public class TestBooking {
 	}
 	@Test
 	public void testDeleteResource() {
-		Resource res = new Projector(new ArrayList<Booking>(), 256);
-		Resource res1 = new Projector(new ArrayList<Booking>(), 512);
+		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
+		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		int a3 = admin.addResource(ba, res);
@@ -387,7 +387,7 @@ public class TestBooking {
 	public void testReadResource() {
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
 		BookingsOrganizer ba = new BookingsOrganizer();
-		Resource res = new Projector(new ArrayList<Booking>(), 256);
+		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
 		String a1 = admin.readResource(ba, res);
 		assertEquals("Se nessuna risorsa è presente il metodo ritorna Risorese: ", "Risorsa: \n", a1);
 		admin.addResource(ba, res);
@@ -397,8 +397,8 @@ public class TestBooking {
 	
 	@Test
 	public void testUpdateResource() {
-		Resource res = new Projector(new ArrayList<Booking>(), 256);
-		Resource res1 = new Projector(new ArrayList<Booking>(), 512);
+		Resource res = new Projector(new ArrayList<Booking>(), 256, "projector");
+		Resource res1 = new Projector(new ArrayList<Booking>(), 512, "projector");
 		Admin admin = new Admin("Mario", "Rossi", "abc@abc.it", "1234");
 		BookingsOrganizer ba = new BookingsOrganizer();
 		int a3 = admin.addResource(ba, res);
