@@ -104,16 +104,16 @@ public class TestBooking {
 	}
 	@Test
 	public void testFirstAvailabilityLimit() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
-		Period p = new Period().withHours(3);
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
+		Period p = new Period().withHours(3); // duration of the booking you want
 		List<DateTime> book1 = ba.firstAvailability("Projector", p, 256);
-		DateTime start = book1.get(0);
-		DateTime end = book1.get(1);
-		DateTime d = new DateTime();
+		DateTime start = book1.get(0); // start DateTime found
+		DateTime end = book1.get(1); // end dateTime found
+		DateTime d = new DateTime(); // DateTime of the present
 		List<DateTime> book2 = ba.firstAvailability("Projector", p, 512);
 		assertEquals("Se una prenotazione di 3 ore a partire dal presente con il limite a 256 è possibile torna il"
 				+ "datetime di quando inizia(dateTime corrente)", d.getHourOfDay(), book1.get(0).getHourOfDay());
