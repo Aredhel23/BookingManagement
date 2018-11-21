@@ -56,14 +56,14 @@ public class TestBooking {
 	
 	@Test
 	public void testDeleteBooked() {
-		List<Booking> l = new ArrayList<>();
-		int colors = 256;
+		List<Booking> l = new ArrayList<>(); // array that contains the bookings
+		int colors = 256; // limit of the projector
 		Resource res = new Projector(l, colors, "projector");
-		BookingsOrganizer ba = new BookingsOrganizer();
-		ba.getOrganizer().put(res, res.getList());
+		BookingsOrganizer ba = new BookingsOrganizer(); // organizer containing the resources and bookings
+		ba.getOrganizer().put(res, res.getList()); // add the resource and its booking array in the organizer
 		DateTime start = new DateTime(2004, 12, 25, 0, 0, 0, 0);
 		DateTime end = new DateTime(2005, 1, 1, 0, 0, 0, 0);
-		int a1 = ba.addBooking(null, res, "a", start, end);
+		int a1 = ba.addBooking(null, res, "a", start, end); // null because there are not the users yet
 		int a3 = ba.deleteBooking(res, "a", start, end);
 		int a2 = ba.deleteBooking(res, "b", start, end);	
 		assertEquals("Se una prenotazione della risorsa è cancellata il metodo ritorna 0", 0, a3);
