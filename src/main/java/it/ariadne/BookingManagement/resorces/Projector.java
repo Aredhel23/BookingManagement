@@ -17,20 +17,9 @@ public class Projector implements Resource {
 	private String type = "Projector";
 	/***
 	 * constructor of the projector.
-	 * @param l list of the bookings of the projector.
-	 * @param colors limit of the projector.
-	 * @param name  the name of the projector.
 	 */
-	public Projector(List<Booking> l, int colors, String name) {
-		this.projectorList = l;
-		this.colors = colors;
-		this.name = name;
-	}
-	
-	public Projector(String name, int colors) {
+	public Projector() {
 		this.projectorList = new ArrayList<>();
-		this.colors = colors;
-		this.name = name;
 	}
 	
 
@@ -77,6 +66,22 @@ public class Projector implements Resource {
 			this.colors = lim;
 			return 0;
 		}
+	}
+
+	public int getColors() {
+		return colors;
+	}
+	@Override
+	public String getName() {
+		return name;
+	}
+
+	public void setColors(int colors) {
+		this.colors = colors;
+	}
+	@Override
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 

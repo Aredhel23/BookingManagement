@@ -60,5 +60,14 @@ public class Car implements Resource {
 			return 0;
 		}
 	}
+	@Override
+	public String getName() {
+		return name;
+	}
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 
 }
