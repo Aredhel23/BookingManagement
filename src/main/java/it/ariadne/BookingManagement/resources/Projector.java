@@ -1,10 +1,7 @@
-package it.ariadne.BookingManagement.resorces;
+package it.ariadne.BookingManagement.resources;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import org.joda.time.DateTime;
-import org.joda.time.Interval;
 
 import it.ariadne.BookingManagement.Booking;
 import it.ariadne.BookingManagement.Resource;

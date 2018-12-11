@@ -1,7 +1,7 @@
 package it.ariadne.BookingManagement;
 
-import it.ariadne.BookingManagement.resorces.Car;
-import it.ariadne.BookingManagement.resorces.Projector;
+import it.ariadne.BookingManagement.resources.Car;
+import it.ariadne.BookingManagement.resources.Projector;
 
 public class ResourceFactory {
 	//use getShape method to get object of type shape 

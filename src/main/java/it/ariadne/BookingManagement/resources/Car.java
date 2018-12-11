@@ -1,4 +1,4 @@
-package it.ariadne.BookingManagement.resorces;
+package it.ariadne.BookingManagement.resources;
 
 import java.util.ArrayList;
 import java.util.List;

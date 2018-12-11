@@ -11,8 +11,6 @@ import org.junit.Test;
 
 import it.ariadne.BookingManagement.people.Admin;
 import it.ariadne.BookingManagement.people.User;
-import it.ariadne.BookingManagement.resorces.Car;
-import it.ariadne.BookingManagement.resorces.Projector;
 
 public class TestBooking {
 	@Test
