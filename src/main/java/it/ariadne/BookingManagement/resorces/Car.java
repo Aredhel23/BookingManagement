@@ -13,13 +13,13 @@ public class Car implements Resource {
 	private String name;
 	
 	
-	public Car(String name, int seats) {
-		this.name = name;
-		this.seats = seats;
+
+	public Car() {
 		this.bookings = new ArrayList<>();
 		this.type = "Car";
 	}
 
+	
 	@Override
 	public List<Booking> getList() {
 		
